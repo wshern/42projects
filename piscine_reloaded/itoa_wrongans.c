@@ -1,6 +1,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+// refer to libft for correct itoa
+// refer to libft for correct itoa
+// refer to libft for correct itoa
+
 int	numlen(int nbr)
 {
 	int	i;
