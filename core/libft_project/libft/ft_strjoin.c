@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/06 19:04:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/08/12 14:17:19 by werlim           ###   ########.fr       */
+/*   Updated: 2026/08/13 18:39:24 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	j;
 	char	*dest;
-	
+
 	len1 = 0;
 	len2 = 0;
 	if (s1 != NULL)
