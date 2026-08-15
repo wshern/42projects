@@ -4,3 +4,4 @@
 *.a
 a.out
 libft_tester/
+.vscode/
