@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 01:23:47 by werlim            #+#    #+#             */
-/*   Updated: 2026/08/16 04:47:02 by werlim           ###   ########.fr       */
+/*   Updated: 2026/08/17 17:42:45 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,35 +34,37 @@ static size_t	counter(char const *s, char c)
 	return (counter);
 }
 
-static char **f_arr(char const *s, char c, char **arr)
+static char	**f_arr(char const *s, char c, char **arr)
 {
-	int i;
-	int j;
-	int start;
-	
+	int	i;
+	int	j;
+	int	start;
+
 	i = 0;
 	j = 0;
+	while (s[i] == c)
+		i++;
 	start = i;
 	while (s[i])
 	{
 		i++;
 		if (s[i] == c && s[i - 1] != c)
 		{
-			arr[j++] = ft_substr(s, start, (i - start));
+			arr[j++] = ft_substr(s, start, (size_t)(i - start));
 			while (s[i] == c)
 				i++;
 			start = i;
 		}
 	}
 	if (s[i] == '\0' && s[i - 1] != c)
-		arr[j] = ft_substr(s, start, (i - start));
+		arr[j] = ft_substr(s, start, (size_t)(i - start));
 	return (arr);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t wordcount;
-	char **arr;
+	size_t	wordcount;
+	char	**arr;
 
 	if (!s)
 		return (NULL);
@@ -77,3 +79,22 @@ char	**ft_split(char const *s, char c)
 		arr = f_arr(s, c, arr);
 	return (arr);
 }
+/*
+int main(void)
+{
+	char *s = "xxtestxworldxxx   crazyxxx";
+	char c = 'x';
+	char **arr;
+	int i = 0;
+
+	arr = ft_split(s, c);
+	while (arr[i] != NULL)
+	{
+		printf("%s, %d\n", arr[i], i);
+		i++;
+	}
+	while (arr[i])
+		free(arr[i++]);
+	free(arr);
+	return (0);
+}*/
