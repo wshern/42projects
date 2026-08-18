@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 16:35:24 by werlim            #+#    #+#             */
-/*   Updated: 2026/08/14 16:59:40 by werlim           ###   ########.fr       */
+/*   Updated: 2026/08/18 20:43:15 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,22 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	c;
+	int		i;
+	char	*str;
 
-	if (n == -2147483648)
-	{
-		ft_putstr_fd("-2147483648", fd);
-		return ;
-	}
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	while (n / 10 > 0)
-	{
-		c = n % 10 + '0';
-		ft_putchar_fd(c, fd);
-		n /= 10;
-	}
-	c = n + '0';
-	ft_putchar_fd(c, fd);
+	i = 0;
+	str = ft_itoa(n);
+	while (str[i])
+		ft_putchar_fd(str[i++], fd);
 }
+
+/*
+#include <stdio.h>
+int main(void)
+{
+	int i = 1234;
+	int fd = 1;
+
+	ft_putnbr_fd(i, fd);
+	return (0);
+}*/
