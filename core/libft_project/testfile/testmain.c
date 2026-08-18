@@ -517,6 +517,19 @@ static void test_strdup(void)
 	free(ptr2);
 }
 
+static void test_ftsplit(void)
+{
+	char *s = "xxtestx xxxwordxxx";
+	char c = 'x';
+	char **arr;
+
+	arr = ft_split(s, c);
+	if (arr == NULL)
+		printf("st_split FAIL - NULL returned!");
+	else
+		printf("ft_split OK!");
+}
+
 int	main(void)
 {
 	test_strlen();
@@ -540,5 +553,7 @@ int	main(void)
 	test_atoi();
 	test_calloc();
 	test_strdup();
+
+	test_ftsplit();
 	return (0);
 }
