@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/14 16:35:24 by werlim            #+#    #+#             */
-/*   Updated: 2026/08/18 20:43:15 by werlim           ###   ########.fr       */
+/*   Updated: 2026/08/18 20:45:40 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_putnbr_fd(int n, int fd)
 	str = ft_itoa(n);
 	while (str[i])
 		ft_putchar_fd(str[i++], fd);
+	free(str);
 }
 
 /*
