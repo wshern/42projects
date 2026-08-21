@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/18 16:48:37 by werlim            #+#    #+#             */
-/*   Updated: 2026/08/18 20:22:11 by werlim           ###   ########.fr       */
+/*   Updated: 2026/08/21 19:00:35 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ char	**ft_split(char const *s, char c)
 	char	**arr;
 	size_t	wordcount;
 
+	if (!s)
+		return (NULL);
 	wordcount = wordcounter(s, c);
 	arr = (char **)malloc(sizeof(char *) * (wordcount + 1));
 	if (arr == NULL)

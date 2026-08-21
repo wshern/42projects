@@ -17,8 +17,7 @@ cursus.
 
 ## Instructions
 
-    make        - compiles libft.a (mandatory part)
-    make bonus  - compiles libft.a including the linked list functions
+    make        - compiles libft.a
     make clean  - removes object files
     make fclean - removes object files and libft.a
     make re     - fclean then make
