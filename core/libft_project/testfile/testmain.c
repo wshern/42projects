@@ -525,9 +525,9 @@ static void test_ftsplit(void)
 
 	arr = ft_split(s, c);
 	if (arr == NULL)
-		printf("st_split FAIL - NULL returned!");
+		printf("st_split FAIL - NULL returned!\n");
 	else
-		printf("ft_split OK!");
+		printf("ft_split OK!\n");
 }
 
 int	main(void)
