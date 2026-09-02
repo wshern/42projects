@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ftp_putnbr_hex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/01 21:58:25 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/02 21:41:06 by werlim           ###   ########.fr       */
+/*   Created: 2026/09/02 20:34:18 by werlim            #+#    #+#             */
+/*   Updated: 2026/09/02 21:45:38 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ftp_putnbr_hex(long nbr)
+{
+	char	result;
+	int		counter;
 
-int	ft_printf(const char *s, ...);
-int	ftp_putchar(char c);
-int ftp_putstr(const char *s);
-int ftp_putnbr_dec(int nbr);
-
-#endif
+	counter = 0;
+	if (nbr < 0)
+	{
+		counter += ftp_putchar('-');
+		nbr = -nbr;
+	}
+	if (nbr / 16 == 0)
+	{
+		result = nbr + '0';
+		counter += ftp_putchar(result);
+	}
+	else
+	{
+		counter += ftp_putnbr_hex(nbr / 10);
+		counter += ftp_putnbr_hex(nbr % 10);
+	}
+	return (counter);
+}
