@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/09/01 22:11:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/01 22:23:26 by werlim           ###   ########.fr       */
+/*   Created: 2026/09/01 21:55:11 by werlim            #+#    #+#             */
+/*   Updated: 2026/09/02 20:32:48 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_putstr(const char *s)
+int ftp_putchar(char c)
 {
-	int i;
-
-	i = 0;
-	while (s[i])
-		write(1, &s[i++], 1);
-	return (i);
+	write(1, &c, 1);
+	return (1);
 }

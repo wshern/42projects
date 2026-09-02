@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:08:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/01 22:18:11 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/02 20:32:05 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,16 @@
 static int f_ident(const char type, va_list list)
 {
 	if (type == 'c')
-		return (ft_putchar(va_arg(list, int)));
+		return (ftp_putchar(va_arg(list, int)));
 	else if (type == 's')
-		return (ft_putstr(va_arg(list, char *)));
+		return (ftp_putstr(va_arg(list, char *)));
 	else if (type == 'p')
 	else if (type == 'd' || type == 'i')
+		return (ftp_putnbr(va_arg(list, int)));
 	else if (type == 'u')
 	else if (type == 'x' || type == 'X')
 	else if (type == '%')
-		return (ft_putchar('%'));
+		return (ftp_putchar('%'));
 	return (-1);
 }
 
