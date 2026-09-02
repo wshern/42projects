@@ -6,22 +6,26 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:08:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/01 17:58:13 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/01 22:18:11 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_printf.h"
 #include <stdarg.h>
 
 static int f_ident(const char type, va_list list)
 {
 	if (type == 'c')
+		return (ft_putchar(va_arg(list, int)));
 	else if (type == 's')
+		return (ft_putstr(va_arg(list, char *)));
 	else if (type == 'p')
 	else if (type == 'd' || type == 'i')
 	else if (type == 'u')
 	else if (type == 'x' || type == 'X')
 	else if (type == '%')
 		return (ft_putchar('%'));
+	return (-1);
 }
 
 int ft_printf(const char *s, ...)
@@ -30,6 +34,8 @@ int ft_printf(const char *s, ...)
 	int		i;
 	int		charcount;
 
+	if (!s || *s == '\0')
+		return (0);
 	i = 0;
 	charcount = 0;
 	va_start(list, s);
@@ -37,13 +43,17 @@ int ft_printf(const char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			
+			if (s[i + 1] == '\0')
+			{
+				va_end(list);
+				return (-1);
+			}
+			else
+				f_indent(s[++i], list);
 		}
-		else if (s[i] == '%' && s[i + 1] == '\0')
-			return (-1);
 		else
 		{
-			ft_putchar_fd(s[i], 1);
+			ft_putchar(s[i]);
 			charcount++;
 		}
 		i++;
