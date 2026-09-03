@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:08:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/03 18:32:06 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/03 19:13:02 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,39 +27,48 @@ static int f_ident(const char type, va_list list)
         return (handler_unsigned(va_arg(list, unsigned int), type));
     else if (type == '%')
         return (ftp_putchar('%'));
-    return (-1);
+	else if (type == '\0')
+		return (-1);
+	return (-1);
+}
+
+static int f_passby(const char *s, va_list list)
+{
+	int i;
+	int counter;
+	int check;
+
+	i = 0;
+	counter = 0;
+	check = 0;
+	while (s[i])
+	{
+		if (s[i] == '%')
+		{
+			check = f_ident(s[++i], list);
+			if (check == -1)
+				return (-1);
+			check += counter;
+		}
+		else
+		{
+			ftp_putchar(s[i]);
+			counter++;
+		}
+		i++;
+	}
+	return (counter);
 }
 
 int ft_printf(const char *s, ...)
 {
 	va_list	list;
-	int		i;
 	int		charcount;
 
 	if (!s || *s == '\0')
 		return (0);
-	i = 0;
-	charcount = 0;
 	va_start(list, s);
-	while (s[i])
-	{
-		if (s[i] == '%')
-		{
-			if (s[i + 1] == '\0')
-			{
-				va_end(list);
-				return (-1);
-			}
-			else
-				f_indent(s[++i], list);
-		}
-		else
-		{
-			ft_putchar(s[i]);
-			charcount++;
-		}
-		i++;
-	}
+	charcount = f_passby(s, list);
 	va_end(list);
 	return (charcount);
 }
