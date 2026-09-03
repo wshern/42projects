@@ -6,15 +6,15 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/02 20:34:18 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/03 18:14:17 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/03 20:26:34 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static const char	*g_dec = "0123456789";
-static const char	*g_hexlow = "0123456789abcdef";
-static const char	*g_hexup = "0123456789ABCDEF";
+static const char	*const g_dec = "0123456789";
+static const char	*const g_hexlow = "0123456789abcdef";
+static const char	*const g_hexup = "0123456789ABCDEF";
 
 static int	ftp_putnbr(unsigned long nbr, int base, const char *alnum)
 {
