@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/01 21:58:25 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/03 17:58:20 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/03 18:32:40 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 
-//int	ft_printf(const char *s, ...);
+int	ft_printf(const char *s, ...);
 int	ftp_putchar(char c);
 int	ftp_putstr(const char *s);
 int	handler_int(int nbr);
