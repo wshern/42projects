@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/27 18:08:32 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/02 21:41:22 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/03 18:32:06 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,19 @@
 
 static int f_ident(const char type, va_list list)
 {
-	if (type == 'c')
-		return (ftp_putchar(va_arg(list, int)));
-	else if (type == 's')
-		return (ftp_putstr(va_arg(list, char *)));
-	else if (type == 'p')
-	else if (type == 'd' || type == 'i')
-		return (ftp_putnbr_dec(va_arg(list, int)));
-	else if (type == 'u')
-	else if (type == 'x' || type == 'X')
-	else if (type == '%')
-		return (ftp_putchar('%'));
-	return (-1);
+    if (type == 'c')
+        return (ftp_putchar(va_arg(list, int)));
+    else if (type == 's')
+        return (ftp_putstr(va_arg(list, char *)));
+    else if (type == 'p')
+        return (handler_ptr(va_arg(list, unsigned long)));
+    else if (type == 'd' || type == 'i')
+        return (handler_int(va_arg(list, int)));
+    else if (type == 'u' || type == 'x' || type == 'X')
+        return (handler_unsigned(va_arg(list, unsigned int), type));
+    else if (type == '%')
+        return (ftp_putchar('%'));
+    return (-1);
 }
 
 int ft_printf(const char *s, ...)
