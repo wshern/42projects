@@ -47,7 +47,7 @@ not write implementation code. Its use was limited to:
 - Showing unfamiliar syntax in generic form only, never as part of a project
   function (for example `->` and function pointer declarations).
 
-Every function was written by hand and every bug located and fixed by hand.
+Every function was written by hand and every bug located are fixed by hand.
 
 ## Library description
 
