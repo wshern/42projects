@@ -145,10 +145,7 @@ data is the three constant digit tables.
 - `man 3 printf` and `man 3 stdarg`.
 - The System V AMD64 ABI, for variadic argument layout and why `va_list` is an
   array type on that platform.
-- cppreference.com, for `va_start`, `va_arg`, `va_copy`, `va_end` and when
-  their use is undefined.
 - The 42 Norm, version 4.1.
-- Tripouille/printfTester.
 
 ### Use of AI
 
