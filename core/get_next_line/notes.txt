@@ -1,0 +1,10 @@
+functions for gnl:
+
+gnl
+read_nextline
+find \n 
+str before \n 
+str after \n 
+strdup
+strjoin?
+free?
