@@ -2,9 +2,10 @@ functions for gnl:
 
 gnl
 read_nextline
-find \n 
+find_newline
+gnl_strjoin
+gnl_strlen
+
 str before \n 
 str after \n 
-strdup
-strjoin?
 free?
