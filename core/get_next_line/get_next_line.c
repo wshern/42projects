@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 16:17:49 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/10 15:45:11 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/10 16:29:08 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 char	*gnl_strbefore(const char *s, int i)
 {
 	char	*strbefore;
-	int		j;
 
 	if (!s)
 		return (NULL);
 	if (i != -1)
 		strbefore = malloc(sizeof(char) * (i + 2));
 	else
-		strbefore = malloc(sizeof(char) * gnl_strlen(s) + 1);
+		strbefore = malloc(sizeof(char) * (gnl_strlen(s) + 1));
 	if (!strbefore)
 		return (NULL);
 	if (i != -1)
-		strbefore = gnl_strcpy(s, 0, i, "strbefore");
+		strbefore = gnl_strcpy(s, 0, i, strbefore);
 	else
-		strbefore = gnl_strcpy(s, 0, (gnl_strlen(s) - 2), "strbefore");
+		strbefore = gnl_strcpy(s, 0, (gnl_strlen(s) - 1), strbefore);
 	return (strbefore);
 }
 
@@ -40,16 +39,19 @@ char	*gnl_strafter(char *s, int i)
 	if (!s)
 		return (NULL);
 	str_len = gnl_strlen(s);
-	if (i != -1)
-		strafter = malloc(sizeof(char) * (str_len - i));
-	else
-		strafter = malloc(sizeof(char) * (str_len + 1));
-	if (!strafter)
+	if (i == -1 || i + 1 == str_len)
+	{
+		free(s);
 		return (NULL);
-	if (i != -1)
-		strafter = gnl_strcpy(s, (i + 1), str_len, "strafter");
+	}
 	else
-		strafter = gnl_strcpy(s, 0, str_len, "strafter");
+		strafter = malloc(sizeof(char) * (str_len - i));
+	if (!strafter)
+	{
+		free(s);
+		return (NULL);
+	}
+	strafter = gnl_strcpy(s, (i + 1), (str_len - 1), strafter);
 	free(s);
 	return (strafter);
 }
@@ -57,24 +59,29 @@ char	*gnl_strafter(char *s, int i)
 char	*update_storage(int fd, char *storage)
 {
 	char	*rd_buf;
+	char	*temp;
 	int		rd_n;
 
 	rd_buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!rd_buf)
-		return (0);
+		return (NULL);
 	while (find_newline(storage) == -1)
 	{
 		rd_n = read(fd, rd_buf, BUFFER_SIZE);
 		if (rd_n == -1)
 		{
-			free(rd_n);
+			free(rd_buf);
+			free(storage);
 			return (NULL);
 		}
 		else if (rd_n == 0)
-			break;
+			break ;
 		rd_buf[rd_n] = '\0';
-		storage = gnl_strjoin(storage, rd_buf);
+		temp = gnl_strjoin(storage, rd_buf);
+		free(storage);
+		storage = temp;
 	}
+	free(rd_buf);
 	return (storage);
 }
 
