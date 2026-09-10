@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 18:23:41 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/10 15:46:23 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/10 16:23:24 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	find_newline(const char *s)
 {
-	int i;
+	int	i;
 
 	if (!s)
 		return (-1);
@@ -28,19 +28,26 @@ int	find_newline(const char *s)
 
 char	*gnl_strjoin(const char *s1, const char *s2)
 {
-	int i;
-	int j;
-	char *dest;
-	
+	int		i;
+	int		j;
+	char	*dest;
+
 	dest = malloc(sizeof(char) * (gnl_strlen(s1) + gnl_strlen(s2) + 1));
 	if (!dest)
 		return (NULL);
-	i = 0;
-	while (s1[i])
-		dest[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		dest[j++] = s2[i++];
+	j = 0;
+	if (s1)
+	{
+		i = 0;
+		while (s1[i])
+			dest[j++] = s1[i++];
+	}
+	if (s2)
+	{
+		i = 0;
+		while (s2[i])
+			dest[j++] = s2[i++];
+	}
 	dest[j] = '\0';
 	return (dest);
 }
@@ -57,28 +64,15 @@ int	gnl_strlen(const char *s)
 	return (i);
 }
 
-char *gnl_strcpy(const char *s, int start, int end, const char type)
+char	*gnl_strcpy(const char *s, int start, int end, char *dest)
 {
-	char *str;
+	int	i;
 
+	i = 0;
 	if (!s)
 		return (NULL);
-	if (type == "strbefore")
-	{
-		while (start <= end)
-		{
-			str[start] = s[start];
-			start++;
-		}
-	}
-	else if (type == "strafter")
-	{
-		while (s)
-		{
-			str[start] = s[start];
-			start++;
-		}
-	}
-	str[start] = '\0';
-	return (str);
+	while (start <= end)
+		dest[i++] = s[start++];
+	dest[i] = '\0';
+	return (dest);
 }
