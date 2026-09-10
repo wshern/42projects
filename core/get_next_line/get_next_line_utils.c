@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 18:23:41 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/09 18:50:54 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/10 15:46:23 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,30 @@ int	gnl_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+char *gnl_strcpy(const char *s, int start, int end, const char type)
+{
+	char *str;
+
+	if (!s)
+		return (NULL);
+	if (type == "strbefore")
+	{
+		while (start <= end)
+		{
+			str[start] = s[start];
+			start++;
+		}
+	}
+	else if (type == "strafter")
+	{
+		while (s)
+		{
+			str[start] = s[start];
+			start++;
+		}
+	}
+	str[start] = '\0';
+	return (str);
 }
