@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/09 18:23:41 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/10 16:23:24 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/11 18:18:16 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,11 @@ char	*gnl_strcpy(const char *s, int start, int end, char *dest)
 		dest[i++] = s[start++];
 	dest[i] = '\0';
 	return (dest);
+}
+
+char	*gnl_free(char *s1, char *s2)
+{
+	free(s1);
+	free(s2);
+	return (NULL);
 }

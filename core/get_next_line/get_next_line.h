@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/07 18:20:54 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/10 16:24:16 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/11 18:17:48 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ char	*gnl_strcpy(const char *s, int start, int end, char *dest);
 int		gnl_strlen(const char *s);
 char	*gnl_strjoin(const char *s1, const char *s2);
 int		find_newline(const char *s);
+char	*gnl_free(char *s1, char *s2);
 
 #endif

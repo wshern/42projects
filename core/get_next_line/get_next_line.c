@@ -6,7 +6,7 @@
 /*   By: werlim <werlim@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/09/04 16:17:49 by werlim            #+#    #+#             */
-/*   Updated: 2026/09/10 16:29:08 by werlim           ###   ########.fr       */
+/*   Updated: 2026/09/11 18:19:16 by werlim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,18 @@ char	*update_storage(int fd, char *storage)
 
 	rd_buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!rd_buf)
-		return (NULL);
+		return (gnl_free(storage, NULL));
 	while (find_newline(storage) == -1)
 	{
 		rd_n = read(fd, rd_buf, BUFFER_SIZE);
 		if (rd_n == -1)
-		{
-			free(rd_buf);
-			free(storage);
-			return (NULL);
-		}
+			return (gnl_free(rd_buf, storage));
 		else if (rd_n == 0)
 			break ;
 		rd_buf[rd_n] = '\0';
 		temp = gnl_strjoin(storage, rd_buf);
+		if (temp == NULL)
+			return (gnl_free(rd_buf, storage));
 		free(storage);
 		storage = temp;
 	}
